@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Round Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        form {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        .form-section {
+            margin-bottom: 25px;
+            padding: 15px;
+            background: #fff;
+            border-radius: 5px;
+            border: 1px solid #eee;
+        }
+        .form-section h2 {
+            margin-top: 0;
+            color: #444;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 8px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .message {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .success {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+        .error {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add New Round Information</h1>
+    <span style="text-align: center;">
+        <a href="/api/rounds" style="text-align: center;"><p>Viw all time slotes in json</p></a>
+    </span>
+
+    <form action="/api/rounds/add-full" method="POST">
+        <!-- Basic Round Info -->
+        <div class="form-section">
+            <h2>Basic Information</h2>
+            <div class="form-group">
+                <label for="time_slote">Time Slot:</label>
+                <input type="text" id="time_slote" name="time_slote" required placeholder="e.g., 10.00, 11.15">
+            </div>
+            
+            <div class="form-group">
+                <label for="level_difficulty">Difficulty Level:</label>
+                <select id="level_difficulty" name="level_difficulty" required>
+                    <option value="">Select difficulty</option>
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Round 1 Info -->
+        <div class="form-section">
+            <h2>Round 1 Details</h2>
+            <div class="form-group">
+                <label for="r_one_ma">min amount:</label>
+                <input type="number" id="r_one_ma" name="r_one_ma" required>
+            </div>
+            <div class="form-group">
+                <label for="r_one_et">end time:</label>
+                <input type="text" id="r_one_et" name="r_one_et" required>
+            </div>
+            <div class="form-group">
+                <label for="r_one_hw">horse win:</label>
+                <input type="number" id="r_one_hw" name="r_one_hw" required>
+            </div>
+        </div>
+
+        <!-- Round 2 Info -->
+        <div class="form-section">
+            <h2>Round 2 Details</h2>
+            <div class="form-group">
+                <label for="r_two_ma">min amount:</label>
+                <input type="number" id="r_two_ma" name="r_two_ma" required>
+            </div>
+            <div class="form-group">
+                <label for="r_two_et">end time:</label>
+                <input type="text" id="r_two_et" name="r_two_et" required>
+            </div>
+            <div class="form-group">
+                <label for="r_two_st">start time:</label>
+                <input type="text" id="r_two_st" name="r_two_st" required>
+            </div>
+            <div class="form-group">
+                <label for="r_two_hw">horse win:</label>
+                <input type="number" id="r_two_hw" name="r_two_hw" required>
+            </div>
+        </div>
+
+        <!-- Round 3 Info -->
+        <div class="form-section">
+            <h2>Round 3 Details</h2>
+            <div class="form-group">
+                <label for="r_three_ma">min amount:</label>
+                <input type="number" id="r_three_ma" name="r_three_ma" required>
+            </div>
+            <div class="form-group">
+                <label for="r_three_et">end time:</label>
+                <input type="text" id="r_three_et" name="r_three_et" required>
+            </div>
+            <div class="form-group">
+                <label for="r_three_st">start time:</label>
+                <input type="text" id="r_three_st" name="r_three_st" required>
+            </div>
+            <div class="form-group">
+                <label for="r_three_hw">horse win:</label>
+                <input type="number" id="r_three_hw" name="r_three_hw" required>
+            </div>
+        </div>
+
+        <!-- Pause Time -->
+        <div class="form-section">
+            <h2>Pause Information</h2>
+            <div class="form-group">
+                <label for="pause_time">Pause Time:</label>
+                <input type="text" id="pause_time" name="pause_time" required placeholder="e.g., 10 ,20">
+            </div>
+        </div>
+
+        <button type="submit">Submit Round Information</button>
+    </form>
+
+    {% if message %}
+    <div class="message {{ 'success' if success else 'error' }}">
+        {{ message }}
+    </div>
+    {% endif %}
+</body>
+</html>

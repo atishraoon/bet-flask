@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Place Your Bet</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: "Josefin Sans", sans-serif;
+      background-color: #FAEBD7;
+      min-height: 100vh;
+    }
+    .game-card {
+      background-color: #B998C9;
+      color: #3B3A36;
+      width: 160px;
+      height: 80px;
+      border-radius: 0.5rem;
+    }
+    .time-chip {
+      background-color: #B998C9;
+      color: #3B3A36;
+      width: 64px;
+      height: 32px;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="d-flex flex-column p-3 p-sm-5">
+  <header class="d-flex justify-content-between align-items-center mb-5">
+    <div class="d-flex align-items-center gap-2">
+      <img alt="Purple stylized leaf icon" class="w-8 h-8" height="32" src="https://storage.googleapis.com/a1aa/image/2cffe55f-55c1-4a3f-1d03-b0bdd21569cb.jpg" width="32"/>
+      <h1 class="text-dark m-0 fs-4 fs-sm-5 tracking-wide fw-light">PLACE YOUR BET</h1>
+    </div>
+    <img alt="Small circular landscape with blue sky and green hill" class="rounded-circle" height="40" src="https://storage.googleapis.com/a1aa/image/f6a7b9c7-a1cf-4c81-2373-fd05e7e3635a.jpg" width="40"/>
+  </header>
+
+<!-- 
+ <section class="d-flex flex-column gap-4">
+  
+  <strong>Easy</strong>
+  {% set easy_slots = rounds_data.rounds | selectattr('level_difficulty', 'equalto', 'easy') | list %}
+  {% if easy_slots %}
+    {% for round in easy_slots %}
+      <a href="{{ url_for('game', time_slot=round.Time_slote) }}" class="time-slot-link">
+        {{ round.Time_slote }} 
+      </a>
+    {% endfor %}
+  {% else %}
+    <p>No slots available for Easy difficulty</p>
+  {% endif %}
+
+ 
+  <strong>Medium</strong>
+  {% set medium_slots = rounds_data.rounds | selectattr('level_difficulty', 'equalto', 'medium') | list %}
+  {% if medium_slots %}
+    {% for round in medium_slots %}
+      <a href="{{ url_for('game', time_slot=round.Time_slote) }}" class="time-slot-link">
+        {{ round.Time_slote }} 
+      </a>
+    {% endfor %}
+  {% else %}
+    <p>No slots available for Medium difficulty</p>
+  {% endif %}
+
+  <strong>Hard</strong>
+  {% set hard_slots = rounds_data.rounds | selectattr('level_difficulty', 'equalto', 'hard') | list %}
+  {% if hard_slots %}
+    {% for round in hard_slots %}
+      <a href="{{ url_for('game', time_slot=round.Time_slote) }}" class="time-slot-link">
+        {{ round.Time_slote }} 
+      </a>
+    {% endfor %}
+  {% else %}
+    <p>No slots available for Hard difficulty</p>
+  {% endif %}
+</section> -->
+
+
+
+
+
+<main class="d-flex flex-column gap-5 w-100" style="max-width: 960px;">
+    <section class="d-flex align-items-center gap-5">
+      <div class="game-card d-flex align-items-center justify-content-center fs-6 fs-lg-5 fw-normal">
+        ignition run
+      </div>
+
+
+      {% set easy_slots = rounds_data.rounds | selectattr('level_difficulty', 'equalto', 'easy') | list %}
+      {% if easy_slots %}
+      {% for round in easy_slots %}
+     
+      <a 
+      href="{{ url_for('game', time_slot=round.Time_slote) }}" class="time-slot-link">
+        <div class="time-chip d-flex align-items-center justify-content-center fs-7 fw-normal">
+          {{ round.Time_slote }} 
+        </div>
+      </a>
+      {% endfor %}
+      {% else %}
+        <p>No slots available for Easy difficulty</p>
+      {% endif %}
+
+      
+    </section>
+
+    <section class="d-flex align-items-center gap-5">
+      <div class="game-card d-flex align-items-center justify-content-center fs-6 fs-lg-5 fw-normal">
+        turbo clash
+      </div>
+      {% set medium_slots = rounds_data.rounds | selectattr('level_difficulty', 'equalto', 'medium') | list %}
+      {% if medium_slots %}
+      {% for round in medium_slots %}
+     
+      <a 
+      href="{{ url_for('game', time_slot=round.Time_slote) }}" class="time-slot-link">
+        <div class="time-chip d-flex align-items-center justify-content-center fs-7 fw-normal">
+          {{ round.Time_slote }} 
+        </div>
+      </a>
+      {% endfor %}
+      {% else %}
+        <p>No slots available for Medium difficulty</p>
+      {% endif %}
+    </section>
+
+    <section class="d-flex align-items-center gap-5">
+      <div class="game-card d-flex align-items-center justify-content-center fs-6 fs-lg-5 fw-normal">
+        apex storm
+      </div>
+      
+
+      {% set hard_slots = rounds_data.rounds | selectattr('level_difficulty', 'equalto', 'hard') | list %}
+      {% if hard_slots %}
+      {% for round in hard_slots %}
+     
+      <a 
+      href="{{ url_for('game', time_slot=round.Time_slote) }}" class="time-slot-link">
+        <div class="time-chip d-flex align-items-center justify-content-center fs-7 fw-normal">
+          {{ round.Time_slote }} 
+        </div>
+      </a>
+      {% endfor %}
+      {% else %}
+        <p>No slots available for Hard difficulty</p>
+      {% endif %}
+    </section>
+  </main>  
+  
+<!--   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{{ url_for('static', filename='js/index.js') }}"></script>  -->
+
+
+</body> 
+</html>
