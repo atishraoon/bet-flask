@@ -1,7 +1,7 @@
 bet flask web app 
 --
 
-sdj
+bet flask is a web app made using framework flask for database sqlite3 using schema techinique it is an prototype betting app
 
 --
 
